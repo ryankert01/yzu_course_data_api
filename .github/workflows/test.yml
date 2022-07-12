@@ -1,0 +1,27 @@
+name: Test Python
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    run_on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ["3.8", "3.9", "3.10"]
+    
+    steps:
+      - uses: action/checkout@v3
+      - name: Set up Python ${{ matrix.python_version }}
+        uses: action/setup-python@v4
+        with:
+          python_version: ${{ matrix.python_version }}
+      - name: install Pytest
+        run: |
+          python -m pip install --upgrade pip
+          python install pytest
+      - name: Test with Pytest
+        run: |
+          pytest test.py
