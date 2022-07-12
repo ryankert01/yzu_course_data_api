@@ -12,7 +12,7 @@ def fib_ans(n: int) -> int:
 
 
 def test_answer():
-    for i in range(72):
+    for i in range(71):
         assert fib(i) == fib_ans(i)
 
 if __name__ == "__main__":
