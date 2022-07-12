@@ -13,9 +13,9 @@ jobs:
         python_version: ["3.8", "3.9", "3.10"]
     
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python_version }}
-        uses: action/setup-python@v4
+        uses: actions/setup-python@v4
         with:
           python_version: ${{ matrix.python_version }}
       - name: install Pytest
