@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    if: ${{ secrets.ACCOUNT_TOKEN == 's1103339' }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.11
@@ -21,8 +21,8 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Run parsing
         env:
-          ACCESS_TOKEN: ${{ secrets.A_TOKEN.ACCESS_TOKEN }}
-          ACCOUNT_TOKEN: ${{ secrets.A_TOKEN.ACCOUNT_TOKEN }} 
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCOUNT_TOKEN: ${{ secrets.ACCOUNT_TOKEN }} 
         run: python main.py
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
