@@ -1,4 +1,4 @@
-name: Test Python
+name: Course Data find
 
 on: 
   push:
@@ -21,8 +21,8 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Run parsing
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          ACCOUNT_TOKEN: ${{ secrets.ACCOUNT_TOKEN }} 
+          ACCESS_TOKEN: ${{ secrets.A_TOKEN.ACCESS_TOKEN }}
+          ACCOUNT_TOKEN: ${{ secrets.A_TOKEN.ACCOUNT_TOKEN }} 
         run: python main.py
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
