@@ -163,7 +163,7 @@ if __name__ == "__main__":
     info = ['', '', '0']
     info[1] = os.environ['ACCESS_TOKEN']
     info[0] = os.environ['ACCOUNT_TOKEN']
-    if info[0] == 's1103339':
+    if info[0] != '':
         bot = Auto(info)
         bot.login()
         res = bot.exec()
