@@ -29,7 +29,7 @@ https://www.ryankert.cc/python-testing-ci-cd/
 [course Website, course ID, 系所, 課名, 英語上課？, 必修選修, 上課時間，地點, 老師]
 ```
 
-api response example:
+api response example: (300,301,302,...
 ```json
 {
   "300": [[]], # no class exist in this option
