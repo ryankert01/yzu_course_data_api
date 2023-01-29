@@ -18,3 +18,7 @@ info[0] = 'partal_accountNumber eg.s1113339'
 pip install -r requirements.txt
 python gen.py
 ```
+
+## API
+
+https://www.ryankert.cc/python-testing-ci-cd/
