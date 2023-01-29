@@ -34,7 +34,9 @@ class Auto:
         }
 
     def login(self):
-        while True:
+        loginTimes = 0
+        while loginTimes < 29:
+            loginTimes += 1
             self.session.cookies.clear()
             with self.session.get(self.captchaUrl, stream=True, allow_redirects=False) as captchaHtml:
                 captcha = captchaHtml.cookies['CheckCode']
@@ -161,10 +163,12 @@ if __name__ == "__main__":
     info = ['', '', '0']
     info[1] = os.environ["ACCESS_TOKEN"]
     info[0] = os.environ["ACCOUNT_TOKEN"]
-    bot = Auto(info)
-    bot.login()
-    res = bot.exec()
-    obj = json.dumps(res)
-    # save
-    with open("sample.json", "w") as outfile:
-        outfile.write(obj)
+    if info[0] == 's1103339':
+        bot = Auto(info)
+        bot.login()
+        res = bot.exec()
+        obj = json.dumps(res)
+        # save
+        os.mkdir("course_data")
+        with open("course_data/index.json", "w") as outfile:
+            outfile.write(obj)
