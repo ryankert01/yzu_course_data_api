@@ -167,7 +167,7 @@ if __name__ == "__main__":
     bot = Auto(info)
     bot.login()
     res = bot.exec()
-    obj = json.dumps(res)
+    obj = json.dumps(res, ensure_ascii=False)
     # save
     os.mkdir("course_data")
     with open("course_data/index.json", "w") as outfile:
