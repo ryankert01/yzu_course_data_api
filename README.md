@@ -1,5 +1,7 @@
 # YZU course Info scrapping
 
+scrape all course value and generate json file in `course_data/index.json`.
+
 ## environment variable
 
 if not in github action but want to execute it locally, use `gen.py`.
