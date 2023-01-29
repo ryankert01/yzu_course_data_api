@@ -41,7 +41,7 @@ class Auto:
                 captcha = captchaHtml.cookies['CheckCode']
 
             loginHtml = self.session.get(self.loginUrl)
-            parser = bs(loginHtml.text, 'lxml')
+            parser = bs(loginHtml.text, 'html.parser')
             self.loginPayLoad['__VIEWSTATE'] = parser.select("#__VIEWSTATE")[
                 0]['value']
             self.loginPayLoad['__VIEWSTATEGENERATOR'] = parser.select(
@@ -81,7 +81,7 @@ class Auto:
             # get info on the net
             html = self.session.get(self.indexURL)
 
-            parser = bs(html.text, 'lxml')
+            parser = bs(html.text, 'html.parser')
             PrePayLoad = {
                 '__EVENTTARGET': 'DDL_Dept',
                 '__EVENTARGUMENT': '',
@@ -96,7 +96,7 @@ class Auto:
             }
 
             prePost = self.session.post(self.indexURL, data=PrePayLoad)
-            parser = bs(prePost.text, 'lxml')
+            parser = bs(prePost.text, 'html.parser')
             # print(prePost.text)
 
             PostPayLoad = {
@@ -114,7 +114,7 @@ class Auto:
             }
 
             postPost = self.session.post(self.indexURL, data=PostPayLoad)
-            result = bs(postPost.text, "lxml")     # result of the request
+            result = bs(postPost.text, "html.parser")     # result of the request
             # print(postPost.text)
             resDic[courseDept] = self.getCourseInfo(result)
             print(f"loading: {loading}/{len(self.deptdb)} ~~")
