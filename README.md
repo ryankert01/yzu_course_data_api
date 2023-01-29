@@ -2,12 +2,17 @@
 
 ## environment variable
 
+if not in github action but want to execute it locally, use `gen.py`.
+And, change the followings.
+
+```python
+info[1] = 'portal_password'
+info[0] = 'partal_accountNumber eg.s1113339'
+```
+
 ## Run
 
 ```sh
 pip install -r requirements.txt
-python main.py
+python gen.py
 ```
-
-
-credit: Huan
