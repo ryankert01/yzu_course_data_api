@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ secrets.A_TOKEN == 's1103339' }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.11
