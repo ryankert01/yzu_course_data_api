@@ -29,32 +29,45 @@ https://www.ryankert.cc/python-testing-ci-cd/
 [course Website, course ID, 系所, 課名, 英語上課？, 必修選修, 上課時間，地點, 老師]
 ```
 
-api response example: (300,301,302,...代表系所或開課單位
+Yearly data: 
 ```json
 {
-  "300": [[]], # no class exist in this option
-  "301": [[]],
-  "302": [
-    [], # the first is always empty
-    [
-      "https://portalfun.yzu.edu.tw/cosSelect/Cos_Plan.aspx?y=111&s=1&id=ME108&c=A",  # course Website
-      "ME108 A",  # course ID
-      "機械工程學系學士班 1年級",  # 系所
-      "應用力學靜力",     ＃ 課名
-      false,     # 英語上課？
-      "系必修",    ＃必修選修
-      ["207", "3208", "208", "3208", "209", ",3208"],   ＃上課時間，地點
-      "何旭川(Shiuh-Chuan Her)"。  ＃老師
-    ],
-    [
-      "https://portalfun.yzu.edu.tw/cosSelect/Cos_Plan.aspx?y=111&s=1&id=ME108&c=B",
-      "ME108 B",
-      "機械工程學系學士班 1年級",
-      "應用力學靜力",
-      true,
-      "系必修",
-      ["406", "3208", "407", "3208", "408", ",3208"],
-      "余念一(Niann-i Yu)"
-    ],
-    ...
+  "111,1  ": {},
+  "111,2  ": {},
+  "110,1  ": {},
+  "110,2  ": {}
+}
+```
+
+api response example: (300,301,302,...代表系所或開課單位
+
+```json
+{
+  "111,1  ": {  # yearly-data
+    "300": [],  # no class exist in this option
+    "301": [],
+    "302": [
+      {
+        "courseURL": "https://portalfun.yzu.edu.tw/cosSelect/Cos_Plan.aspx?y=111&s=1&id=ME108&c=A",
+        "courseID": "ME108 A",
+        "courseYear": "機械工程學系學士班 1年級",
+        "courseName": "應用力學靜力",
+        "isEnglish": false,
+        "courseType": "系必修",
+        "courseTime": ["207", "3208", "208", "3208", "209", "3208"],
+        "courseTeacher": "何旭川(Shiuh-Chuan Her)"
+      },
+      {
+        "courseURL": "https://portalfun.yzu.edu.tw/cosSelect/Cos_Plan.aspx?y=111&s=1&id=ME108&c=B",
+        "courseID": "ME108 B",
+        "courseYear": "機械工程學系學士班 1年級",
+        "courseName": "應用力學靜力",
+        "isEnglish": true,
+        "courseType": "系必修",
+        "courseTime": ["406", "3208", "407", "3208", "408", "3208"],
+        "courseTeacher": "余念一(Niann-i Yu)"
+      }
+    ]
+  }
+}
 ```
