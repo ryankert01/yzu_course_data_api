@@ -154,7 +154,7 @@ class Auto:
                 
                 courseTeacher = tds[6].select_one('a').text if tds[6].select_one('a') else tds[6].text
                 
-                tempInfo = ['courseURL': courseURL, 'courseID': courseID, 'courseYear': courseYear, 'courseName': courseName, 'isEnglish': isEnglish, 'courseType': courseType, 'courseTime': courseTime, 'courseTeacher': courseTeacher]
+                tempInfo = {'courseURL': courseURL, 'courseID': courseID, 'courseYear': courseYear, 'courseName': courseName, 'isEnglish': isEnglish, 'courseType': courseType, 'courseTime': courseTime, 'courseTeacher': courseTeacher}
                 # print(tempInfo)
                 courseInfo.append(tempInfo)
         return courseInfo
