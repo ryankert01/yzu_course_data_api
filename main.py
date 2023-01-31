@@ -69,7 +69,7 @@ class Auto:
         if (item in self.courseList):
             self.courseList.remove(item)
 
-    def exec(self):
+    def exec(self, course_YR):
         resDic = {}
         loading = 1
         for cd in self.deptdb:
@@ -108,7 +108,7 @@ class Auto:
                 '__VIEWSTATEGENERATOR': parser.select("#__VIEWSTATEGENERATOR")[0]['value'],
                 '__EVENTVALIDATION': parser.select("#__EVENTVALIDATION")[0]['value'],
                 'Q': 'RadioButton1',
-                'DDL_YM': '111,1  ',
+                'DDL_YM': course_YR,
                 'DDL_Dept': courseDept,
                 'DDL_Degree': '0',
                 'Button1': '確定'
@@ -154,7 +154,7 @@ class Auto:
                 
                 courseTeacher = tds[6].select_one('a').text if tds[6].select_one('a') else tds[6].text
                 
-                tempInfo = [courseURL, courseID, courseYear, courseName, isEnglish, courseType, courseTime, courseTeacher]
+                tempInfo = ['courseURL': courseURL, 'courseID': courseID, 'courseYear': courseYear, 'courseName': courseName, 'isEnglish': isEnglish, 'courseType': courseType, 'courseTime': courseTime, 'courseTeacher': courseTeacher]
                 # print(tempInfo)
                 courseInfo.append(tempInfo)
         return courseInfo
@@ -162,13 +162,16 @@ class Auto:
 
 
 if __name__ == "__main__":
+    course_YR = ['111,1  ', '111,2  ', '110,1  ', '110,2  ']
     info = ['', '', '0']
     info[1] = os.environ['ACCESS_TOKEN']
     info[0] = os.environ['ACCOUNT_TOKEN']
     if info[0] != '':
         bot = Auto(info)
         bot.login()
-        res = bot.exec()
+        res = {}
+        for yr in course_YR:
+            res[yr] = bot.exec(course_YR=yr)
         obj = json.dumps(res, ensure_ascii=False)
         # save
         os.mkdir("course_data")
