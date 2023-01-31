@@ -126,9 +126,9 @@ class Auto:
     def getCourseInfo(self, soup):
         result = soup.select("#Table1")[0].select("tr")
         num = 0
-        courseInfo = [[]]
+        courseInfo = []
         if soup.text.find("無課程資料") != -1:
-            return [[]]
+            return []
         for i in result:
             num += 1
             if (num % 2 == 1):
@@ -144,8 +144,10 @@ class Auto:
                 child = tds[5].select_one('span').text.split()
                 courseTime = []
                 for j, s in enumerate(child):
-                    if j==0 or j==len(child)-1:
+                    if j==0:
                         courseTime.append(s)
+                    elif j==len(child)-1:
+                        courseTime.append(s[1:])
                     else:
                         courseTime.append(s[1:len(s)-3])
                         courseTime.append(s[len(s)-3:len(s)])
