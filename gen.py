@@ -69,7 +69,7 @@ class Auto:
         if (item in self.courseList):
             self.courseList.remove(item)
 
-    def exec(self):
+    def exec(self, course_YR):
         resDic = {}
         loading = 1
         for cd in self.deptdb:
@@ -108,7 +108,7 @@ class Auto:
                 '__VIEWSTATEGENERATOR': parser.select("#__VIEWSTATEGENERATOR")[0]['value'],
                 '__EVENTVALIDATION': parser.select("#__EVENTVALIDATION")[0]['value'],
                 'Q': 'RadioButton1',
-                'DDL_YM': '111,1  ',
+                'DDL_YM': course_YR,
                 'DDL_Dept': courseDept,
                 'DDL_Degree': '0',
                 'Button1': '確定'
@@ -126,9 +126,9 @@ class Auto:
     def getCourseInfo(self, soup):
         result = soup.select("#Table1")[0].select("tr")
         num = 0
-        courseInfo = [[]]
+        courseInfo = []
         if soup.text.find("無課程資料") != -1:
-            return [[]]
+            return []
         for i in result:
             num += 1
             if (num % 2 == 1):
@@ -144,15 +144,17 @@ class Auto:
                 child = tds[5].select_one('span').text.split()
                 courseTime = []
                 for j, s in enumerate(child):
-                    if j==0 or j==len(child)-1:
+                    if j==0:
                         courseTime.append(s)
+                    elif j==len(child)-1:
+                        courseTime.append(s[1:])
                     else:
                         courseTime.append(s[1:len(s)-3])
                         courseTime.append(s[len(s)-3:len(s)])
                 
                 courseTeacher = tds[6].select_one('a').text if tds[6].select_one('a') else tds[6].text
                 
-                tempInfo = [courseURL, courseID, courseYear, courseName, isEnglish, courseType, courseTime, courseTeacher]
+                tempInfo = {'courseURL': courseURL, 'courseID': courseID, 'courseYear': courseYear, 'courseName': courseName, 'isEnglish': isEnglish, 'courseType': courseType, 'courseTime': courseTime, 'courseTeacher': courseTeacher}
                 # print(tempInfo)
                 courseInfo.append(tempInfo)
         return courseInfo
@@ -160,15 +162,18 @@ class Auto:
 
 
 if __name__ == "__main__":
+    course_YR = ['111,1  ', '111,2  ', '110,1  ', '110,2  ']
     info = ['', '', '0']
     info[1] = 'portal_password'
     info[0] = 'partal_accountNumber eg.s1113339'
-
-    bot = Auto(info)
-    bot.login()
-    res = bot.exec()
-    obj = json.dumps(res, ensure_ascii=False)
-    # save
-    os.mkdir("course_data")
-    with open("course_data/index.json", "w") as outfile:
-        outfile.write(obj)
+    if info[0] != '':
+        bot = Auto(info)
+        bot.login()
+        res = {}
+        for yr in course_YR:
+            res[yr] = bot.exec(course_YR=yr)
+        obj = json.dumps(res, ensure_ascii=False)
+        # save
+        os.mkdir("course_data")
+        with open("course_data/index.json", "w") as outfile:
+            outfile.write(obj)
