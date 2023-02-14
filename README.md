@@ -1,6 +1,6 @@
 # YZU course Info scrapping
 
-scrape all course value and generate json file in `course_data/index.json`.
+scrape all course value and generate json file in `course_data/index.json`. 
 
 ## environment variable
 
