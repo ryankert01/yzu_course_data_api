@@ -21,7 +21,7 @@ python gen.py
 
 ## API
 
-https://www.ryankert.cc/python-testing-ci-cd/
+https://www.ryankert.cc/yzu_course_data_api/
 
 
 一個課程資料包含：
