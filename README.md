@@ -21,7 +21,7 @@ python gen.py
 
 ## API
 
-https://www.ryankert.cc/yzu_course_data_api/
+[https://www.ryankert.cc/yzu_course_data_api/](https://ryankert01.github.io/yzu_course_data_api/)
 
 
 一個課程資料包含：
