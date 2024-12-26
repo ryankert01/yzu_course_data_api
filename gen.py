@@ -162,7 +162,7 @@ class Auto:
 
 
 if __name__ == "__main__":
-    course_YR = ['111,1  ', '111,2  ', '110,1  ', '110,2  ']
+    course_YR = ['113,1  ', '113,2  ']
     info = ['', '', '0']
     info[1] = 'portal_password'
     info[0] = 'partal_accountNumber eg.s1113339'
