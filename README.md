@@ -1,5 +1,9 @@
 # YZU course Info scrapping
 
+## TODOs
+1. allow concurrency (if applicable)
+2. refactor, fix bugs add enrolled_num / total as xiangwei mentioned. 
+
 scrape all course value and generate json file in `course_data/index.json`. 
 
 ## environment variable
