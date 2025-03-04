@@ -2,7 +2,8 @@
 
 ## TODOs
 1. allow concurrency (if applicable)
-2. refactor, fix bugs add enrolled_num / total as xiangwei mentioned. 
+2. refactor, fix bugs add enrolled_num / total as xiangwei mentioned.
+3. add test
 
 scrape all course value and generate json file in `course_data/index.json`. 
 
