@@ -1,20 +1,20 @@
 # YZU course Info scrapping
 
 ## TODOs
+
 1. allow concurrency (if applicable)
 2. refactor, fix bugs add enrolled_num / total as xiangwei mentioned. (current current enrolled num maybe shouldn't be parsed, because it's not a real-time system, but total is okay.)
 3. add tests
 
-scrape all course value and generate json file in `course_data/index.json`. 
+scrape all course value and generate json file in `course_data/index.json`.
 
 ## environment variable
 
 if not in github action but want to execute it locally, use `gen.py`.
 And, change the followings credentials.
 
-```python
-info[1] = 'portal_password'
-info[0] = 'partal_accountNumber eg.s1113339'
+```
+ACCOUNT_TOKEN=portal帳號 ACCESS_TOKEN=portal密碼 python main.py
 ```
 
 ## Run
@@ -28,14 +28,14 @@ python gen.py
 
 [https://ryankert01.github.io/yzu_course_data_api/](https://ryankert01.github.io/yzu_course_data_api/)
 
-
-
 一個課程資料包含：
+
 ```
 [course Website, course ID, 系所, 課名, 英語上課？, 必修選修, 上課時間，地點, 老師]
 ```
 
-Yearly data: 
+Yearly data:
+
 ```json
 {
   "111,1  ": {},

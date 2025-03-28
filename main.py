@@ -164,8 +164,8 @@ class Auto:
 if __name__ == "__main__":
     course_YR = ['111,1  ', '111,2  ', '110,1  ', '110,2  ']
     info = ['', '', '0']
-    info[1] = os.environ['ACCESS_TOKEN']
     info[0] = os.environ['ACCOUNT_TOKEN']
+    info[1] = os.environ['ACCESS_TOKEN']
     if info[0] != '':
         bot = Auto(info)
         bot.login()
